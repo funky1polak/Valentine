@@ -3,14 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine Request</title>
+    <title>Valentine's Day Request</title>
+    <style>
+        body { text-align: center; }
+        #request { margin-top: 20px; }
+        button { margin: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        .dodging {
+            animation: dodge 0.5s infinite alternate;
+        }
+        @keyframes dodge {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(10px); }
+        }
+        .confetti {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Will you be my Valentine?</h1>
-    <img src="minion.gif" alt="Minion GIF">
-    <div>
-        <button type="button" id="yes">Yes</button>
-        <button type="button" id="no">No</button>
+    <h1>Valentine's Day Request</h1>
+    <img src="https://media1.tenor.com/m/kutFNFXxSIsAAAAd/minion-minion-loves.gif" alt="Minion Love" />
+    <div id="request">
+        <h2>Will you be my valentine?</h2>
+        <button id="yesButton">Yes</button>
+        <button id="noButton" class="dodging">No</button>
     </div>
+    <div class="confetti" id="confetti"></div>
+    <script>
+        document.getElementById('yesButton').onclick = function() {
+            createConfetti();
+            alert("Yay! Can't wait to celebrate!");
+        };
+        document.getElementById('noButton').onclick = function() {
+            alert("That's okay! Happy Valentine's Day!");
+        };
+
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.getElementById('confetti').appendChild(confetti);
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+    </script>
 </body>
 </html>
