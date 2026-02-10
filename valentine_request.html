@@ -3,13 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick question</title>
     <meta name="description" content="Tap when you have a sec.">
     <meta property="og:title" content="Quick question">
     <meta property="og:description" content="Tap when you have a sec.">
     <meta property="og:image" content="URL_TO_MINION_GIF">
-    <title>Quick question</title>
+    <meta property="og:type" content="website">
+    <style>
+        /* Add some basic styles */
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; }
+        button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+        #confetti { pointer-events: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999; }
+    </style>
 </head>
 <body>
-    <!-- Your content goes here -->
+    <h1>Do you want to be my Valentine?</h1>
+    <button id="yes-button">Yes</button>
+    <button id="no-button">No</button>
+    <canvas id="confetti"></canvas>
+
+    <script>
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const confetti = document.getElementById('confetti');
+
+        // Initialize confetti canvas
+        const ctx = confetti.getContext('2d');
+        confetti.width = window.innerWidth;
+        confetti.height = window.innerHeight;
+
+        function startConfetti() {
+            // Confetti animation logic here
+            // Create confetti particles and animate
+        }
+
+        yesButton.addEventListener('click', () => {
+            alert('Yay!');
+            startConfetti();
+        });
+
+        noButton.addEventListener('click', () => {
+            alert('Oh no!');
+        });
+    </script>
 </body>
 </html>
